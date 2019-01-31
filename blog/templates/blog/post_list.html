@@ -1,21 +1,69 @@
-<html>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-br">
 
 <head>
-    <title>Keli education</title>
+    <title>keli education</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 
 <body>
-    <div>
-        <h1><a href="/">keli education</a></h1>
+    <div class="text-center container-top" style="margin-bottom:0">
+        <h1 class="title-title">keli education</h1>
+        <p>Nunca é tarde de mais para aprender coisas novas</p>
     </div>
 
-    {% for post in posts %}
-    <div>
-        <p>publicado em: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaksbr }}</p>
+    <div class="container about-me" style="margin-top:30px">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Quem sou eu : </h2>
+                <div class="fakeimg">
+                    <img src="https://cdn.pixabay.com/photo/2013/07/13/13/41/tux-161379_960_720.png" alt="" class="img_tux">
+                </div>
+                <p>Olá, eu sou pedro higor de sousa, desenvoledor jr</p>
+                <h3>Acessar</h3>
+                <p>Acesse painel administrativo: </p>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="http://127.0.0.1:8000/admin">Entrar</a>
+                    </li>
+                </ul>
+                <hr class="d-sm-none">
+            </div>
+            <div class="col-sm-8">
+                <div class="content container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            {% for post in posts %}
+                            <div class="post">
+                                <h1 class="title_post">{{ post.title }}</h1>
+                                <div class="date">
+                                    <p>Data de publicação: {{ post.published_date }}</p>
+                                </div>
+                                <p>{{ post.text|linebreaksbr }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    {% endfor %}
+    <div class="space">
+
+    </div>
+
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>Desenvolvedor: Pedro Higor de Sousa</p>
+    </div>
+
 </body>
 
 </html>
